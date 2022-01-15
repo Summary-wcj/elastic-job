@@ -1,0 +1,39 @@
+
+server:
+  port: 8085
+elasticjob:
+  regCenter:
+    #zookeeper 的ip:port
+    serverLists: 218.78.107.236:2181
+    #名命空间，自己定义就好了
+    namespace: e-job1
+  jobs:
+    #你的这个定时任务名称，自定义名称
+    myElasticJob:
+      #定时任务的全路径名
+      elasticJobClass: com.example.elasticdemo.job.MyJob1
+      #定时任务执行的cron表达式
+      cron: 0/10 * * * * ?
+      #分片数量
+      shardingTotalCount: 3
+      shardingItemParameters: "0=北京,1=上海,2=深圳"
+    occurErrorNoticeEmailJob:
+      elasticJobClass: com.example.elasticdemo.job.SpringBootOccurErrorNoticeEmailJob
+      overwrite: true
+      shardingTotalCount: 3
+      shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+      jobErrorHandlerType: EMAIL
+      jobBootstrapBeanName: occurErrorNoticeEmailBean
+      props:
+        email:
+          host: smtp.qq.com
+          port: 465
+          username: 1043253434@qq.com
+          password: wsmarabeibtkbdge
+          useSsl: true
+          subject: ElasticJob error message
+          from: 1043253434@qq.com
+          to: 18720227799@163.com
+          cc: 18720227799@163.com
+          bcc: 18720227799@163.com
+          debug: false
