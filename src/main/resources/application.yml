@@ -4,7 +4,7 @@ server:
 elasticjob:
   regCenter:
     #zookeeper 的ip:port
-    serverLists: 218.78.107.236:2181
+    serverLists: 127.0.0.1:2181
     #名命空间，自己定义就好了
     namespace: e-job1
   jobs:
@@ -29,11 +29,11 @@ elasticjob:
           host: smtp.qq.com
           port: 465
           username: 1043253434@qq.com
-          password: wsmarabeibtkbdge
+          password: wsmarabeibtk
           useSsl: true
           subject: ElasticJob error message
-          from: 1043253434@qq.com
-          to: 18720227799@163.com
-          cc: 18720227799@163.com
-          bcc: 18720227799@163.com
+          from: 10432534@qq.com
+          to: 187202277@163.com
+          cc: 187202277@163.com
+          bcc: 187202277@163.com
           debug: false
